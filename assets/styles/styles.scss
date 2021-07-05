@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.user-profile-feed {
+  width: 100%;
+  border-radius: 10px;
+  margin: 0;
+  min-height: 100%;
+}
+
+.feed-post {
+  background-color: var(--feed-bg);
+  margin-bottom: 13px;
+  padding: 14px 18px 20px 18px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+
+  &__header {
+    display: flex !important;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    &__social {
+      svg, img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    &__image {
+      width: 43px;
+      height: 43px;
+      border-radius: 50%;
+    }
+
+    &__info {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+      align-self: flex-end;
+    }
+
+    &__description {
+      margin-left: 9px;
+    }
+
+    &__name {
+      color: var(--feed-cards-title);
+      margin-bottom: 3px;
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 0;
+    }
+
+    &__time {
+      color: var(--feed-cards-time);
+      font-weight: bold;
+      margin-bottom: 0;
+      font-weight: bold;
+      font-size: 10px;
+    }
+  }
+
+  &__body {
+    a {
+      color: var(--feed-cards-title);
+      text-decoration: underline;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    &__tweet .twitter-tweet {
+      margin: 10px auto;
+    }
+    &__content {
+      font-size: 14px;
+      color: var(--feed-cards-title);
+      margin-bottom: 16px;
+
+    }
+
+    &__media {
+      width: 100%;
+      border-radius: 14px;
+      border: 0;
+    }
+  }
+}
