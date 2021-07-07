@@ -24,6 +24,13 @@ export interface IFeedPostProps {
   media: null | Array<MediaElement>;
 }
 
+//const {NODE_ENV, TWITCH_BASE_URI} = process.env;
+//const parentURIS = process.env.NODE_ENV === "production" ? process.env.TWITCH_BASE_URI : "localhost";
+const parentURIS =  "rsoj9cflhyppzitnz6fryom1eilqsq.ext-twitch.tv";
+//const parentURIS =  "localhost";
+
+
+
 const FeedPost = ({ title, avatarUrl, userName, createdAt, description, socialFeedType, media }: IFeedPostProps): JSX.Element => {
   const inViewHook = useInView({
     rootMargin: "500px",
@@ -59,6 +66,8 @@ const FeedPost = ({ title, avatarUrl, userName, createdAt, description, socialFe
   if (!videoUrl) {
     imageUrl = media?.find(m => m.type === MediaType.Image)?.mediaUrl || "";
   }
+
+
 
   const renderContent = (inView: boolean) => {
     switch (socialFeedType) {
@@ -115,17 +124,17 @@ const FeedPost = ({ title, avatarUrl, userName, createdAt, description, socialFe
             return (
                 <iframe
                     className="feed-post__body__media"
-                    src={`https://player.twitch.tv/?video=${lastpart}&parent=${window.location.hostname}&autoplay=false`}
                     height="400"
                     width="700"
                     allowFullScreen
+                    src={`https://player.twitch.tv/?video=${lastpart}&autoplay=false&parent=${parentURIS}`}
                 />
             );
           } else {
             return (
                 <iframe
                     className="feed-post__body__media"
-                    src={`https://player.twitch.tv/?channel=${lastpart}&parent=${window.location.hostname}&autoplay=false`}
+                    src={`https://player.twitch.tv/?channel=${lastpart}&autoplay=false&parent=${parentURIS}`}
                     height="400"
                     width="700"
                     allowFullScreen

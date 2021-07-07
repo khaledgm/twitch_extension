@@ -6,6 +6,9 @@ import data from "../../data/temp";
 import DonationEmptyIcon from "../../assets/images/donation_empty.svg";
 
 const {baseApiUrl} = process.env;
+const parentURIS =  "rsoj9cflhyppzitnz6fryom1eilqsq.ext-twitch.tv";
+
+declare const window: any;
 
 export default function UserFeed() {
 
@@ -17,7 +20,7 @@ export default function UserFeed() {
         try {
             setIsLoading(true);
             const response = await axios.get(`${baseApiUrl}/api/basic/profiles/${username}`);
-            setUserProfileData(response.data);
+            //setUserProfileData(response.data);
             fetchUserFeed(response.data.user_id, []);
 
             if (!response) {
@@ -43,6 +46,7 @@ export default function UserFeed() {
                 limit: 30,
             });
             //setUserProfileData(prev => ({...prev, feed: response.data.results}));
+            console.log("**********", response.data.results);
         } catch (err) {
         } finally {
             setIsLoading(false);

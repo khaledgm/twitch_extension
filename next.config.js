@@ -5,6 +5,7 @@ module.exports = {
     env: {
         STATIC_PREFIX: isProduction ? "./static" : "/static",
         baseApiUrl: "https://api.qa.gaimz.com",
+        TWITCH_BASE_URI: "https://rsoj9cflhyppzitnz6fryom1eilqsq.ext-twitch.tv/",
     },
     exportPathMap: async (
         defaultPathMap,

@@ -21,6 +21,22 @@ const data = {
   "live_stream_account_name": "sykkuno",
   "feed": [
     {
+      "id": "60e36da8d55a66531714c6a4",
+      "createdAt": "2021-07-05T20:37:10Z",
+      "title": "Sykkuno started their stream!",
+      "userName": null,
+      "userId": "42395",
+      "avatarUrl": null,
+      "socialFeedType": SocialFeedPlatforms.twitch,
+      "description": "THE DAY",
+      "media": [
+        {
+          "type": MediaType.Video,
+          "mediaUrl": "https://www.twitch.tv/videos/1077672298"
+        }
+      ]
+    },
+    {
       "id": "60e2373ab21d1c5a28a16f4d",
       "createdAt": "2021-07-04T22:32:30Z",
       "title": "Sykkuno started their stream!",
@@ -481,22 +497,6 @@ const data = {
         {
           "type": MediaType.TweetId,
           "mediaUrl": "1403958368734048256"
-        }
-      ]
-    },
-    {
-      "id": "60c5a190e5443bb94abbc2a3",
-      "createdAt": "2021-06-13T06:11:14Z",
-      "title": "Sykkuno tweeted!",
-      "userName": null,
-      "userId": "42395",
-      "avatarUrl": null,
-      "socialFeedType": SocialFeedPlatforms.twitter,
-      "description": "@Natsumiii YEEHAW! 🤠",
-      "media": [
-        {
-          "type": MediaType.TweetId,
-          "mediaUrl": "1403958120334782468"
         }
       ]
     }
