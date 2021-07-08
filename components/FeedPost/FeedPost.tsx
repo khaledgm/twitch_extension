@@ -77,11 +77,13 @@ const FeedPost = ({ title, avatarUrl, userName, createdAt, description, socialFe
   const renderContent = (inView: boolean) => {
     switch (socialFeedType) {
       case SocialFeedPlatforms.twitter:
+        return <>
 
-          return (<p className="feed-post__body__content twitter-link" dangerouslySetInnerHTML={{ __html: parseTweet(description) }} />);
+          <p className="feed-post__body__content twitter-link" dangerouslySetInnerHTML={{ __html: parseTweet(description) }} />
 
 
-        //return <TweetEmbed className="feed-post__body__tweet" id={tweetId} />;
+         <TweetEmbed className="feed-post__body__tweet" id={tweetId} />
+          </>;
       case SocialFeedPlatforms.gaimz:
         if (eventId) {
           return (
@@ -111,7 +113,7 @@ const FeedPost = ({ title, avatarUrl, userName, createdAt, description, socialFe
         return (
             <>
               <p>{description}</p>
-              <a href={videoUrl} target="_blank" className="twitch-link">Watch Stream</a>
+              <a href={videoUrl} target="_blank" className="twitch-link" rel="noreferrer">Watch Stream</a>
             </>
         );
       default:

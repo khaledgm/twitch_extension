@@ -1225,6 +1225,11 @@
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
   integrity sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
 
+"@types/twitter-text@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@types/twitter-text/-/twitter-text-3.1.1.tgz#c23334522ca252659e432635eec2f439706737d0"
+  integrity sha512-TqUdwZOdCi3pB4kmCyOS6sjLfzRjbqcwFuVKGQ9Gq9J37GBnF7mf6cIw/zN2GgDbvXYEEfoiuPGFw+TK5ZU0EA==
+
 "@typescript-eslint/parser@^4.20.0":
   version "4.28.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.28.1.tgz#5181b81658414f47291452c15bf6cd44a32f85bd"
