@@ -10,6 +10,7 @@ import GaimzLogo from "../../public/images/icon-48x48.png";
 
 import { formatDistanceToNow } from "date-fns";
 import { MediaElement, MediaType, SocialFeedPlatforms } from "../../common/types";
+import twitter from "twitter-text";
 
 import TweetEmbed from "react-tweet-embed";
 import useInView from "react-cool-inview";
@@ -68,19 +69,19 @@ const FeedPost = ({ title, avatarUrl, userName, createdAt, description, socialFe
   }
 
 
+  const parseTweet = (tweetText: string) => {
+    return twitter.autoLink(tweetText);
+  };
+
 
   const renderContent = (inView: boolean) => {
     switch (socialFeedType) {
       case SocialFeedPlatforms.twitter:
-        if (!tweetId) {
-          return <p className="feed-post__body__content">{description}</p>;
-        }
 
-        if (!inView) {
-          return <Image src={Twitch404Logo} className="feed-post__body__media" />;
-        }
+          return (<p className="feed-post__body__content twitter-link" dangerouslySetInnerHTML={{ __html: parseTweet(description) }} />);
 
-        return <TweetEmbed className="feed-post__body__tweet" id={tweetId} />;
+
+        //return <TweetEmbed className="feed-post__body__tweet" id={tweetId} />;
       case SocialFeedPlatforms.gaimz:
         if (eventId) {
           return (
@@ -106,6 +107,13 @@ const FeedPost = ({ title, avatarUrl, userName, createdAt, description, socialFe
         } else {
           return <p className="feed-post__body__content">{description}</p>;
         }
+      case SocialFeedPlatforms.twitch:
+        return (
+            <>
+              <p>{description}</p>
+              <a href={videoUrl} target="_blank" className="twitch-link">Watch Stream</a>
+            </>
+        );
       default:
         return <p className="feed-post__body__content">{description}</p>;
     }
@@ -171,7 +179,7 @@ const FeedPost = ({ title, avatarUrl, userName, createdAt, description, socialFe
           </div>
           <div className="feed-post__body">
             {renderContent(inView)}
-            {renderMedia(inView)}
+            {/*{renderMedia(inView)}*/}
           </div>
         </div>
       </div>

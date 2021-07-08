@@ -59,7 +59,6 @@ body {
       color: var(--feed-cards-time);
       font-weight: bold;
       margin-bottom: 0;
-      font-weight: bold;
       font-size: 10px;
     }
   }
@@ -70,6 +69,10 @@ body {
       text-decoration: underline;
       margin-bottom: 10px;
       font-weight: 600;
+      &.twitch-link {
+        color: var(--twitch-text-link);
+        font-size: 14px;
+      }
     }
     &__tweet .twitter-tweet {
       margin: 10px auto;
@@ -79,6 +82,11 @@ body {
       color: var(--feed-cards-title);
       margin-bottom: 16px;
 
+      &.twitter-link {
+        a {
+          color: var(--twitter-text-link);
+        }
+      }
     }
 
     &__media {
@@ -88,3 +96,6 @@ body {
     }
   }
 }
+
+
+

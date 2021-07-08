@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import "../assets/styles/colors.scss";
 import "../assets/styles/styles.scss";
 import Script from "next/script";
 
