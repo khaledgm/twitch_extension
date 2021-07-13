@@ -8,11 +8,9 @@ import FacebookGamingLogo from "../../assets/images/social_icons_squares/fb.svg"
 import Twitch404Logo from "../../public/images/404_preview-twitch.jpg";
 import GaimzLogo from "../../public/images/icon-48x48.png";
 
-import { formatDistanceToNow } from "date-fns";
-import { MediaElement, MediaType, SocialFeedPlatforms } from "../../common/types";
+import {formatDistanceToNow} from "date-fns";
+import {MediaElement, MediaType, SocialFeedPlatforms} from "../../common/types";
 import twitter from "twitter-text";
-
-import TweetEmbed from "react-tweet-embed";
 import useInView from "react-cool-inview";
 
 export interface IFeedPostProps {
@@ -70,20 +68,40 @@ const FeedPost = ({ title, avatarUrl, userName, createdAt, description, socialFe
 
 
   const parseTweet = (tweetText: string) => {
-    return twitter.autoLink(tweetText);
+    //return twitter.autoLink(tweetText);
+
+    let result = "";
+    const entities = twitter.extractEntitiesWithIndices(tweetText);
+    let beginIndex = 0;
+
+    entities.sort(function (a, b) {
+      return a.indices[0] - b.indices[0];
+    });
+
+    for (let i = 0; i < entities.length; i++) {
+      const entity = entities[i];
+      result += tweetText.substring(beginIndex, entity.indices[0]);
+
+      if ("url" in entity && entity.url) {
+        result += `<a target="_blank" href="${entity.url}" rel="nofollow">${entity.url}</a>`;
+      } else if ("hashtag" in entity && entity.hashtag) {
+        result += `<a target="_blank" href="https://twitter.com/search?q=%23${entity.hashtag}" title="${entity.hashtag}" class="tweet-url hashtag" rel="nofollow">#${entity.hashtag}</a>`;
+      } else if ("screenName" in entity && entity.screenName) {
+        result += `<a target="_blank" class="tweet-url username" href="https://twitter.com/${entity.screenName}" data-screen-name="${entity.screenName}" rel="nofollow">@${entity.screenName}</a>`;
+      }
+
+      beginIndex = entity.indices[1];
+    }
+
+    result += tweetText.substring(beginIndex, tweetText.length);
+    return `<p>${result}</p><a rel="nofollow" target="_blank" href="https://twitter.com/user/status/${tweetId}">See Thread</a>`;
   };
 
 
   const renderContent = (inView: boolean) => {
     switch (socialFeedType) {
       case SocialFeedPlatforms.twitter:
-        return <>
-
-          <p className="feed-post__body__content twitter-link" dangerouslySetInnerHTML={{ __html: parseTweet(description) }} />
-
-
-         <TweetEmbed className="feed-post__body__tweet" id={tweetId} />
-          </>;
+        return <div className="feed-post__body__content twitter-link" dangerouslySetInnerHTML={{ __html: parseTweet(description) }} />;
       case SocialFeedPlatforms.gaimz:
         if (eventId) {
           return (

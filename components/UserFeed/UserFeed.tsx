@@ -23,6 +23,8 @@ export default function UserFeed() {
             //setUserProfileData(response.data);
             fetchUserFeed(response.data.user_id, []);
 
+            console.log("basic profile", response.data);
+
             if (!response) {
                 throw new Error();
             }
@@ -55,7 +57,7 @@ export default function UserFeed() {
 
 
     useEffect(() => {
-        //loadUserProfile("sykkuno");
+        loadUserProfile("sykkuno");
     }, []);
 
 
